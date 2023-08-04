@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="archivo mysql">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/archivo mysql" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/build/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/demo/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/generated/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/legacy/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/main/core-api/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/main/core-impl/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/main/protocol-impl/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/main/user-api/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/main/user-impl/java" />
+      <root url="file://$USER_HOME$/Documents/archivo mysql/src/test/java" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Documents/archivo mysql" recursive="false" />
+  </library>
+</component>
