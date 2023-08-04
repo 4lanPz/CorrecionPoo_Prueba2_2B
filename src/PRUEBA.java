@@ -17,6 +17,8 @@ import java.sql.*;
     SIGNO VARCHAR(25)
 )*/
 
+/*PRUEBA DE ALAN PEREZ*/
+
 public class PRUEBA {
     String Nombre,Fecha,Signo, Cedula;
     int Codigo;
