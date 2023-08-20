@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="adaptive">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/adaptive" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/alwaysencrypted" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/azureactivedirectoryauthentication" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/connections" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/constrained" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/dataclassification" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/datatypes" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/resultsets" />
+      <root url="file://$PROJECT_DIR$/../Driver sql/sqljdbc_12.4/enu/samples/sparse" />
+    </SOURCES>
+  </library>
+</component>

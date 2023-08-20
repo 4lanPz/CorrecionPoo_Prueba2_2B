@@ -18,13 +18,14 @@ import java.sql.*;
 )*/
 
 /*PRUEBA DE ALAN PEREZ*/
-
 public class PRUEBA {
-    String Nombre,Fecha,Signo, Cedula;
+    String Nombre,Fecha,Signo,Cedula;
     int Codigo;
-    static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
-    static String USER="root";
-    static String PASS="root_bas3";
+    String conexion= "jdbc:sqlserver://localhost:1433;" +
+            "database=CorrecionP2B;" +
+            "user=root;" +
+            "password=root_1;" +
+            "trustServerCertificate=true;";
     private JButton BBORRAR;
     private JButton BACTUALIZAR;
     private JButton BINGRESAR;
@@ -46,6 +47,7 @@ public class PRUEBA {
     private JLabel LABEL1;
     private JLabel TITULO;
 
+
     public PRUEBA() {
         BINGRESAR.addActionListener(new ActionListener() {
             @Override
@@ -58,7 +60,7 @@ public class PRUEBA {
                 Signo = (String) CSIGNO.getSelectedItem();
                 String QUERY="INSERT INTO DATOS(CODIGO,CEDULA,NOMBRE,FECHA_NACIMIENTO,SIGNO)" +
                         "VALUES(?,?,?,?,?)";
-                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS))
+                try(Connection conn=DriverManager.getConnection(conexion))
                 {
                     PreparedStatement statement = conn.prepareStatement(QUERY);
                     // Establecer valores para los parámetros de la sentencia SQL
@@ -89,7 +91,7 @@ public class PRUEBA {
                 Fecha = TFECHA.getText();
                 Signo = (String) CSIGNO.getSelectedItem();
                 String UPDATE_QUERY = "UPDATE DATOS SET CEDULA = ?, NOMBRE = ?, FECHA_NACIMIENTO = ? , SIGNO = ? WHERE CODIGO = ?";
-                try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+                try (Connection conn = DriverManager.getConnection(conexion)) {
                     PreparedStatement statement = conn.prepareStatement(UPDATE_QUERY);
                     // Establecer nuevos valores para los campos siguiendo el orden del query
                     statement.setString(1,Cedula);
@@ -111,34 +113,7 @@ public class PRUEBA {
                 }
             }
         });
-        BOTONBUSCARPORSIGNOButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String SIGNO1;
-                SIGNO1 = (String) CSIGNO.getSelectedItem();
-                String SELECT_QUERY="SELECT * FROM DATOS WHERE SIGNO = ?";
-                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
-                {
-                    PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
-                    statement.setString(1, SIGNO1);
-                    ResultSet rs = statement.executeQuery();
-                    while (rs.next()) {
-                        Codigo = Integer.parseInt(rs.getString("CODIGO"));
-                        Cedula = rs.getString("CEDULA");
-                        Nombre = rs.getString("NOMBRE");
-                        Fecha = rs.getString("FECHA_NACIMIENTO");
-                    }
-                        TCODIGO.setText(String.valueOf(Codigo));
-                        TCEDULA.setText(Cedula);
-                        TNOMBRE.setText(Nombre);
-                        TFECHA.setText(Fecha);
-                }
-                catch (SQLException eX){
-                    throw new RuntimeException(eX);
-                }
-                LABEL1.setText("Datos impresos / 0 si es que no existe");
-            }
-        });
+
         BLIMPIAR.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,7 +132,7 @@ public class PRUEBA {
                 int idToDelete;
                 idToDelete= Integer.parseInt(TCODIGO.getText());
                 String DELETE_QUERY = "DELETE FROM DATOS WHERE CODIGO = ?";
-                try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+                try (Connection conn = DriverManager.getConnection(conexion)) {
                     PreparedStatement statement = conn.prepareStatement(DELETE_QUERY);
                     // Establecer valor para el parámetro del ID que deseas eliminar
                     statement.setInt(1, idToDelete);
@@ -175,12 +150,40 @@ public class PRUEBA {
                 }
             }
         });
+        BOTONBUSCARPORSIGNOButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String SIGNO1;
+                SIGNO1 = (String) CSIGNO.getSelectedItem();
+                String SELECT_QUERY="SELECT * FROM DATOS WHERE SIGNO = ?";
+                try(Connection conn=DriverManager.getConnection(conexion);)
+                {
+                    PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
+                    statement.setString(1, SIGNO1);
+                    ResultSet rs = statement.executeQuery();
+                    while (rs.next()) {
+                        Codigo = Integer.parseInt(rs.getString("CODIGO"));
+                        Cedula = rs.getString("CEDULA");
+                        Nombre = rs.getString("NOMBRE");
+                        Fecha = rs.getString("FECHA_NACIMIENTO");
+                    }
+                    TCODIGO.setText(String.valueOf(Codigo));
+                    TCEDULA.setText(Cedula);
+                    TNOMBRE.setText(Nombre);
+                    TFECHA.setText(Fecha);
+                }
+                catch (SQLException eX){
+                    throw new RuntimeException(eX);
+                }
+                LABEL1.setText("Datos impresos / 0 si es que no existe");
+            }
+        });
         BUSCARPORCODIGOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Codigo= Integer.parseInt(TCODIGO.getText());
                 String SELECT_QUERY="SELECT * FROM DATOS WHERE CODIGO = ?";
-                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+                try(Connection conn=DriverManager.getConnection(conexion);)
                 {
                     PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                     statement.setString(1, String.valueOf(Codigo));
@@ -207,7 +210,7 @@ public class PRUEBA {
             public void actionPerformed(ActionEvent e) {
                 Nombre=TNOMBRE.getText();
                 String SELECT_QUERY="SELECT * FROM DATOS WHERE NOMBRE = ?";
-                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+                try(Connection conn=DriverManager.getConnection(conexion);)
                 {
                     PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                     statement.setString(1,Nombre);

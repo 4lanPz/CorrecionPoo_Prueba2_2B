@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="archivo mysql" level="project" />
+    <orderEntry type="library" name="adaptive" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
   </component>
 </module>
