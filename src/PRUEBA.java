@@ -47,7 +47,6 @@ public class PRUEBA {
     private JLabel LABEL1;
     private JLabel TITULO;
 
-
     public PRUEBA() {
         BINGRESAR.addActionListener(new ActionListener() {
             @Override
